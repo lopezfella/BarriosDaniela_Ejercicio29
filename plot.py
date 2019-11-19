@@ -1,19 +1,85 @@
 import numpy as np
-import matplotlib.pylab as plt
-from mpl_toolkits import mplot3d
+import matplotlib.pyplot as plt
 
-x = np.linspace(0,1,100)
-t = np.linspace(0,1,100)
-plx, plt = np.meshgrid(x,t)
+fileA = np.loadtxt("datosA.dat")
+gridA = np.reshape(fileA, (200, 200))
 
-phi = np.genfromtxt('datos.txt')
-fig0 = plt.figure(figsize=(15,12))
+fileB = np.loadtxt("datosB.dat")
+gridB = np.reshape(fileB, (200, 200))
 
-ax0 = fig0.add_subplot(111, projection='3d')
-ax0.plot_surface(plx,plt,phi, color = 'darkred')
-ax0.set_xlabel('$t$',size=15)
-ax0.set_ylabel('$x$',size=15)
-ax0.set_zlabel('$phi$',size=15)
-ax0.set_title('Plot Difusion', size = 20)
+fileC = np.loadtxt("datosC.dat")
+gridC = np.reshape(fileC, (200, 200))
 
-plt.savefig('plot_Dif.pdf')
+fileD = np.loadtxt("datosD.dat")
+gridD = np.reshape(fileD, (200, 200))
+
+plt.figure()
+plt.subplot(3,3,1)
+plt.imshow(gridA)
+plt.title("Nx=30, Ntc")
+plt.xlabel("Posicion")
+plt.ylabel("Tiempo")
+plt.subplot(3,3,2)
+plt.plot(fileA) //No olvidar escoger columna
+plt.xlabel("Posicion")
+plt.ylabel("Phi")
+plt.subplot(3,3,3)
+plt.plot(fileA) //No olvidar escoger columna
+plt.xlabel("Tiempo")
+plt.ylabel("Phi")
+
+plt.savefig("evA.png")
+
+
+plt.figure()
+plt.subplot(3,3,1)
+plt.imshow(gridB)
+plt.title("Nx=31, Ntc")
+plt.xlabel("Posicion")
+plt.ylabel("Tiempo")
+plt.subplot(3,3,2)
+plt.plot(fileB) //No olvidar escoger columna
+plt.xlabel("Posicion")
+plt.ylabel("Phi")
+plt.subplot(3,3,3)
+plt.plot(fileB) //No olvidar escoger columna
+plt.xlabel("Tiempo")
+plt.ylabel("Phi")
+
+plt.savefig("evB.png")
+
+plt.figure()
+plt.subplot(3,3,1)
+plt.imshow(gridC)
+plt.title("Nx=29, Ntc")
+plt.xlabel("Posicion")
+plt.ylabel("Tiempo")
+plt.subplot(3,3,2)
+plt.plot(fileC) //No olvidar escoger columna
+plt.xlabel("Posicion")
+plt.ylabel("Phi")
+plt.subplot(3,3,3)
+plt.plot(fileC) //No olvidar escoger columna
+plt.xlabel("Tiempo")
+plt.ylabel("Phi")
+
+plt.savefig("evC.png")
+
+
+plt.figure()
+plt.subplot(3,3,1)
+plt.imshow(gridD)
+plt.title("Nx=29, Ntc-10")
+plt.xlabel("Posicion")
+plt.ylabel("Tiempo")
+plt.subplot(3,3,2)
+plt.plot(fileD) //No olvidar escoger columna
+plt.xlabel("Posicion")
+plt.ylabel("Phi")
+plt.subplot(3,3,3)
+plt.plot(fileD) //No olvidar escoger columna
+plt.xlabel("Tiempo")
+plt.ylabel("Phi")
+
+plt.savefig("evD.png")
+
